@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
+namespace Models.DTO
 {
-    public class Departamento
+    public class DepartamentoDTO
     {
         public int IdDepartamento { get; set; }
         public string? Nombre { get; set; }
-
-        public virtual ICollection<Empleado>? EmpleadosReferencia { get; set; }
     }
 }

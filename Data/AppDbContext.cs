@@ -52,8 +52,8 @@ namespace Data
                 //definicion de llave primaria
                 tb.Property(col => col.IdDepartamento).IsRequired();
 
-                tb.HasOne(e => e.Departamento)
-                .WithMany(d => d.Empleados)
+                tb.HasOne(e => e.DepartamentoReferencia)
+                .WithMany(d => d.EmpleadosReferencia)
                 .HasForeignKey(e => e.IdDepartamento)
                 .OnDelete(DeleteBehavior.Cascade);
             });

@@ -1,6 +1,7 @@
 ﻿using Data;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Models.DTO;
 using Services.Interface;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Services.Service
 
         public async Task<List<Empleado>> GetAllAsync()
         {
-            return await _appDbContext.Empleados.ToListAsync();
+         return await _appDbContext.Empleados.Include(p => p.DepartamentoReferencia).ToListAsync();   
         }
 
         public async Task AddAsync(Empleado empleado)

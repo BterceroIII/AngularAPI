@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.DTO;
 using Services.Interface;
 
 namespace AppAPI.Controllers
@@ -17,10 +19,29 @@ namespace AppAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Lista()
+        [Route("lista")]
+        public async Task<ActionResult<List<EmpleadoDTO>>> Lista()
         {
-            List<Empleado> lista = await _empleadoService.GetAllAsync();
-            return StatusCode(StatusCodes.Status200OK, lista);
+            var listaDTO = new List<EmpleadoDTO>();
+            var listaDB = await _empleadoService.GetAllAsync();
+
+            foreach (var item in listaDB)
+            {
+                listaDTO.Add(new EmpleadoDTO
+                {
+                    IdEmpleado = item.IdEmpleado,
+                    Nombre = item.Nombre,
+                    Apellido = item.Apellido,
+                    NombreDepartamento = item.DepartamentoReferencia.Nombre,
+                    Sueldo = item.Sueldo,
+                    FechaContrato = item.FechaContrato,
+                    Activo = item.Activo
+
+                });
+            }
+
+           
+            return StatusCode(StatusCodes.Status200OK, listaDTO);
         }
 
         [HttpGet("{id}")]
