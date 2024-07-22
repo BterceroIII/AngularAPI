@@ -20,7 +20,7 @@ namespace AppAPI.Controllers
         public async Task<IActionResult> Lista()
         {
             List<Empleado> lista = await _empleadoService.GetAllAsync();
-            return StatusCode(StatusCodes.Status200OK, Lista);
+            return StatusCode(StatusCodes.Status200OK, lista);
         }
 
         [HttpGet("{id}")]
