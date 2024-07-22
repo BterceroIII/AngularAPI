@@ -27,28 +27,28 @@ namespace AppAPI.Controllers
         public async Task<IActionResult> Obtener(int id)
         {
             Empleado empleado = await _empleadoService.GetByIdAsync(id);
-            return StatusCode(StatusCodes.Status200OK, Lista);
+            return StatusCode(StatusCodes.Status200OK, empleado);
         }
 
         [HttpPost]
         public async Task<IActionResult> Nuevo([FromBody] Empleado empleado)
         {
             await _empleadoService.AddAsync(empleado);
-            return StatusCode(StatusCodes.Status200OK, new {isSuccess = "Empleado creado exitosamente"});
+            return StatusCode(StatusCodes.Status200OK, new {message = "Empleado creado exitosamente"});
         }
 
         [HttpPut]
         public async Task<IActionResult> Editar([FromBody] Empleado empleado)
         {
             await _empleadoService.UpdateAsync(empleado);
-            return StatusCode(StatusCodes.Status200OK, new { isSuccess = "Empleado editado exitosamente" });
+            return StatusCode(StatusCodes.Status200OK, new { message = "Empleado editado exitosamente" });
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(int id)
         {
             await _empleadoService.DeleteAsync(id);
-            return StatusCode(StatusCodes.Status200OK, new { isSuccess = "Empleado Eliminado exitosamente" });
+            return StatusCode(StatusCodes.Status200OK, new { message = "Empleado Eliminado exitosamente" });
         }
     }
 }
