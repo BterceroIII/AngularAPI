@@ -31,17 +31,18 @@ namespace Services.Service
 
         public async Task AddAsync(Empleado empleado)
         {
-            await _appDbContext.Empleados.AddAsync(empleado);
+            _appDbContext.Empleados.Add(empleado);
             await _appDbContext.SaveChangesAsync();
         }
 
         public async Task<Empleado> GetByIdAsync(int id)
         {
-            return await _appDbContext.Empleados.FirstOrDefaultAsync(e => e.IdEmpleado == id);
+            return await _appDbContext.Empleados.Include(p => p.DepartamentoReferencia).Where(e => e.IdEmpleado == id).FirstOrDefaultAsync();
         }
         
         public async Task UpdateAsync(Empleado empleado)
         {
+            _appDbContext.Empleados.Include(p => p.DepartamentoReferencia);
             _appDbContext.Empleados.Update(empleado);
             await _appDbContext.SaveChangesAsync();
         }

@@ -18,6 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IEmpleadoService, EmpleadoService>();
+builder.Services.AddScoped<IDepartamentoService, DepartamentoService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

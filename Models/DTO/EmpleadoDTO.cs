@@ -15,6 +15,6 @@ namespace Models.DTO
         public decimal Sueldo { get; set; }
         public DateOnly FechaContrato { get; set; }
         public bool Activo { get; set; }
-        public string NombreDepartamento { get; set; }
+        public string? NombreDepartamento { get; set; }
     }
 }
