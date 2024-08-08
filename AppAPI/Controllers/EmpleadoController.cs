@@ -19,7 +19,6 @@ namespace AppAPI.Controllers
         }
 
         [HttpGet]
-        [Route("lista")]
         public async Task<ActionResult<List<EmpleadoDTO>>> Lista()
         {
             var listaDTO = new List<EmpleadoDTO>();
@@ -33,7 +32,7 @@ namespace AppAPI.Controllers
                     Nombre = item.Nombre,
                     Apellido = item.Apellido,
                     IdDepartamento = item.DepartamentoReferencia.IdDepartamento,
-                    NombreDepartamento = item.DepartamentoReferencia.Nombre,
+                    Departamento = item.DepartamentoReferencia.Nombre,
                     Sueldo = item.Sueldo,
                     FechaContrato = item.FechaContrato,
                     Activo = item.Activo
@@ -61,7 +60,7 @@ namespace AppAPI.Controllers
                 Nombre = empleadoDB.Nombre,
                 Apellido = empleadoDB.Apellido,
                 IdDepartamento = empleadoDB.DepartamentoReferencia.IdDepartamento,
-                NombreDepartamento = empleadoDB.DepartamentoReferencia.Nombre,
+                Departamento = empleadoDB.DepartamentoReferencia.Nombre,
                 Sueldo = empleadoDB.Sueldo,
                 FechaContrato = empleadoDB.FechaContrato,
                 Activo = empleadoDB.Activo
