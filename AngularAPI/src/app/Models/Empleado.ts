@@ -6,7 +6,5 @@ export interface Empleado{
     apellido : string;
     sueldo : number;
     fechaContrato : string;
-    activo : boolean;
-    idDepartamento: number;
-    nombreDepartamento: Departamento;
+    departamento: Departamento;
 }

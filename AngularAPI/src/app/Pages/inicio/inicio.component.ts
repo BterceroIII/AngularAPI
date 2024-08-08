@@ -18,19 +18,23 @@ import { Route, Router } from '@angular/router';
 export class InicioComponent {
   private empleadoServicio = inject(EmpleadoService);
   public listaEmpleados:Empleado[] = [];
-  public displayedColumns: string[] = ['nombre','apellido','sueldo','fechaContrato','departamento','activo','accion'];
+  public displayedColumns: string[] = ['nombre','apellido','sueldo','fechaContrato','departamento','accion'];
 
-  getEmpleados(){
+  getEmpleados() {
     this.empleadoServicio.getEmpleados().subscribe({
-      next:(data)=>{
-        if (data.data.length > 0) {
-          this.listaEmpleados = data.data;
+      next: (data) => {
+        console.log(data)
+        // Asegúrate de que la estructura sea como se espera
+        if (data && data.$values && data.$values.length > 0) {
+          this.listaEmpleados = data.$values; // Asigna $values a listaEmpleados
+        } else {
+          console.log('No se encontraron empleados.');
         }
       },
-      error:(err)=>{
-        console.log(err.message)
+      error: (err) => {
+        console.log(err.message);
       }
-    })
+    });
   }
 
   constructor(private router:Router){
