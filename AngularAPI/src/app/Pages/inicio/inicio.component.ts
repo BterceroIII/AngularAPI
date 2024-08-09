@@ -7,11 +7,12 @@ import {MatButtonModule} from '@angular/material/button';
 import { EmpleadoService } from '../../Services/empleado.service';
 import { Empleado } from '../../Models/Empleado';
 import { Route, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [MatCardModule,MatTableModule,MatIconModule,MatButtonModule],
+  imports: [CommonModule,MatCardModule,MatTableModule,MatIconModule,MatButtonModule],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
